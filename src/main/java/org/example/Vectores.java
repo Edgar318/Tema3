@@ -73,19 +73,24 @@ public class Vectores {
 
         int suma = 0;
 
-       int numin;
+       int numin = 0;
+
+       int contador = 0;
 
         for (int i = 0;i< numero.length;i++){ //bucle para rellenar los vectores
 
             numero[i] = aleatorio.nextInt(101);
 
-            suma+=numero[i];
-
         }
-        System.out.println("Dime un numero: ");
+        System.out.println("Dime un numero [0-100]: ");
         numin = teclado.nextInt();
-        
 
+        for (int i = 0; i< numero.length; i++){ //for para comprobar cuantas veces se repite un numero introducido
+            if (numin == numero[i]){
+                contador++;
+            }
+        }
+        System.out.println("El numero: " + numin + " se repite " + contador + " veces.");
 
     }
 
