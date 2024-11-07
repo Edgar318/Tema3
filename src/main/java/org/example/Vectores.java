@@ -95,6 +95,29 @@ public class Vectores {
 
     }
 
+    public void ejercicio4bateria() {
+        Scanner entrada = new Scanner(System.in);
+        int enteros [] = {4,3,5,19,34,75,4};
+        System.out.println(Arrays.toString(enteros));
+        int enteros2 [] = new int [enteros.length-1];
+
+        System.out.println("Dime el que quieres eliminar: ");
+        int eliminar = entrada.nextInt();
+
+        for (int i = 0; i < enteros.length-1 ; i++){
+            if(i < eliminar){
+                enteros2[i] = enteros[i];
+            }else{
+
+                enteros2[i] = enteros[i+1];
+
+            }
+
+        }
+        System.out.println(Arrays.toString(enteros));
+        System.out.println(Arrays.toString(enteros2));
+    }
+
     public void ejercicio5bateria() {
 
         int numeros[] = {3, 5, 2, 1, 4};
@@ -131,6 +154,37 @@ public class Vectores {
         }
         String textovector = Arrays.toString(palabras);
         System.out.println( textovector);
+    }
+
+    public void Samurais(){
+
+        Scanner entrada = new Scanner(System.in);
+
+        System.out.println("Equipo 1 ");
+        System.out.println("Introduce potencia de los samurais: ");
+
+        String equipo1 = entrada.toString();
+
+        String[] equipo11 = equipo1.split(" ");
+        String suma = String.valueOf(0);
+
+        for(int i = 0;i <= equipo11.length; i ++ ) {
+            suma += equipo11[i];
+        }
+        if (suma != 30){
+
+        }
+
+        System.out.println("Equipo completado.");
+
+        System.out.println("Equipo 2 ");
+        System.out.println("Introduce potencia de los samurais: ");
+
+        String equipo2 = entrada.toString();
+
+        String[] equipo22 = equipo2.split(" ");
+
+        System.out.println("Equipo completado");
     }
 
 
