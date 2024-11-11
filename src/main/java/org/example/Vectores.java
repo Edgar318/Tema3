@@ -97,19 +97,19 @@ public class Vectores {
 
     public void ejercicio4bateria() {
         Scanner entrada = new Scanner(System.in);
-        int enteros [] = {4,3,5,19,34,75,4};
+        int enteros[] = {4, 3, 5, 19, 34, 75, 4};
         System.out.println(Arrays.toString(enteros));
-        int enteros2 [] = new int [enteros.length-1];
+        int enteros2[] = new int[enteros.length - 1];
 
         System.out.println("Dime el que quieres eliminar: ");
         int eliminar = entrada.nextInt();
 
-        for (int i = 0; i < enteros.length-1 ; i++){
-            if(i < eliminar){
+        for (int i = 0; i < enteros.length - 1; i++) {
+            if (i < eliminar) {
                 enteros2[i] = enteros[i];
-            }else{
+            } else {
 
-                enteros2[i] = enteros[i+1];
+                enteros2[i] = enteros[i + 1];
 
             }
 
@@ -149,44 +149,99 @@ public class Vectores {
 
         String palabras[] = {"Juan", "Pepe", "Manolo", "Maria"};
 
-        for(String i :palabras){
+        for (String i : palabras) {
             System.out.println(i);
         }
         String textovector = Arrays.toString(palabras);
-        System.out.println( textovector);
+        System.out.println(textovector);
     }
 
-    public void Samurais(){
+    public void Samurais() {
 
         Scanner entrada = new Scanner(System.in);
 
-        System.out.println("Equipo 1 ");
-        System.out.println("Introduce potencia de los samurais: ");
+        // Definir las variables de las características del juego
+        int numsamurais = 7;
+        int totalpotencia = 30;
 
-        String equipo1 = entrada.toString();
+        // Crear los arrays para los dos equipos
+        int[] equipo1 = new int[numsamurais];
+        int[] equipo2 = new int[numsamurais];
 
-        String[] equipo11 = equipo1.split(" ");
-        String suma = String.valueOf(0);
+        // Lógica para asignar las potencias
+        // Asignar potencias para el primer equipo
+        for (int j = 1; j <= 2; j++) {
+            int[] equipo;
 
-        for(int i = 0;i <= equipo11.length; i ++ ) {
-            suma += equipo11[i];
+            if (j == 1) {
+                equipo = equipo1;  // Seleccionar el equipo 1
+            } else {
+                equipo = equipo2;  // Seleccionar el equipo 2
+            }
+
+            while (true) {
+                System.out.println("Introduce la potencia de los samurais para el Equipo " + j + " (7 valores que sumen 30):");
+                String input = entrada.nextLine();
+                String[] potencias = input.split(" ");
+
+                if (potencias.length != numsamurais) {
+                    System.out.println("ERROR: Debes introducir exactamente " + numsamurais + " valores.");
+                    continue;
+                }
+
+                int suma = 0;
+                for (int i = 0; i < numsamurais; i++) {
+                    equipo[i] = Integer.parseInt(potencias[i]);
+                    suma += equipo[i];
+                }
+
+                if (suma == totalpotencia) {
+                    System.out.println("Equipo " + j + " completado.");
+                    break; // Salir del bucle al tener la potencia válida
+                } else {
+                    System.out.println("ERROR. La potencia total no suma 30. Inténtalo de nuevo.");
+                }
+            }
         }
-        if (suma != 30){
 
+        System.out.println("¡Equipos completados! ¡Empieza la batalla!");
+
+        // Lógica de la batalla directamente en el método main
+        int bajasequipo1 = 0;
+        int bajasequipo2 = 0;
+
+        for (int i = 0; i < numsamurais; i++) {
+            System.out.print("Samurai " + (i + 1) + ": ");
+
+            if (equipo1[i] > equipo2[i]) {
+                System.out.println("Gana Equipo 1. " + equipo1[i] + " vs " + equipo2[i]);
+                equipo2[i] = 0;
+                bajasequipo2++;
+            } else if (equipo1[i] < equipo2[i]) {
+                System.out.println("Gana Equipo 2. " + equipo1[i] + " vs " + equipo2[i]);
+                equipo1[i] = 0;
+                bajasequipo1++;
+            } else {
+                System.out.println("Empate. Ambos samuráis mueren.");
+                equipo1[i] = 0;
+                equipo2[i] = 0;
+                bajasequipo1++;
+                bajasequipo2++;
+            }
+
+            // Verificar si algún equipo ha perdido más de la mitad de sus samuráis
+            if (bajasequipo1 > numsamurais / 2) {
+                System.out.println("¡Equipo 2 GANA! Equipo 1 ha tenido " + bajasequipo1 + " bajas.");
+                break;
+            }
+            if (bajasequipo2 > numsamurais / 2) {
+                System.out.println("¡Equipo 1 GANA! Equipo 2 ha tenido " + bajasequipo2 + " bajas.");
+                break;
+            }
         }
 
-        System.out.println("Equipo completado.");
-
-        System.out.println("Equipo 2 ");
-        System.out.println("Introduce potencia de los samurais: ");
-
-        String equipo2 = entrada.toString();
-
-        String[] equipo22 = equipo2.split(" ");
-
-        System.out.println("Equipo completado");
+        if (bajasequipo1 <= numsamurais / 2 && bajasequipo2 <= numsamurais / 2) {
+            System.out.println("La batalla ha terminado sin que ningún equipo tenga más de la mitad de bajas.");
+        }
     }
-
-
 }
-
