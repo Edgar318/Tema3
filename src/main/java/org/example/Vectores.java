@@ -250,4 +250,30 @@ public class Vectores {
             System.out.println("La batalla ha terminado sin que ningún equipo tenga más de la mitad de bajas.");
         }
     }
+
+    public void split(){
+        Scanner teclado = new Scanner(System.in);
+
+        final String palabra = "Navidad";
+
+        System.out.println("Introduce la cantidad de letras a mostrar");
+        String cantidad = teclado.nextLine();
+
+        String cantidades [] = cantidad.split(" ");
+        String letras [] = palabra.split("");
+        System.out.println(Arrays.toString(letras));
+        System.out.println(Arrays.toString(cantidades));
+        String resultado = "";
+
+        for(int i = 0 ; i<letras.length ;i++){
+            for (int j = 0; j <Integer.parseInt(cantidades[i]); j++){
+                resultado = resultado + letras[i];
+
+            }
+        }
+        System.out.println("resultado = " + resultado);
+
+
+    }
+
 }
