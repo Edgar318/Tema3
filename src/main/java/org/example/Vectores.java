@@ -276,4 +276,18 @@ public class Vectores {
 
     }
 
+    public void prueba_buscar (){
+        String colores [] = {"amarillo","rojo","azul","naranja"};
+        String color = "negro";
+
+        boolean existe = Arrays.asList(colores).contains(color);
+
+        if(existe){
+            System.out.println("El color " + color + " existe en el vector.");
+        }else{
+            System.out.println("El color " + color + " no existe");
+        }
+    }
+
+
 }
