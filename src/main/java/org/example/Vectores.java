@@ -250,5 +250,4 @@ public class Vectores {
             System.out.println("La batalla ha terminado sin que ningún equipo tenga más de la mitad de bajas.");
         }
     }
-    }
 }
