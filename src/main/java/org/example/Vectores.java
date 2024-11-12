@@ -289,5 +289,56 @@ public class Vectores {
         }
     }
 
+    public void rule(){
+        Scanner teclado = new Scanner(System.in);
+        Random aleatorio = new  Random();
+        String colores[] = {"rojo","negro"};
+
+        Integer numero[] = new Integer[37];
+        for (int i=0 ; i < numero.length;i++){
+            numero[i] = 1;
+        }
+        String pares [] = {"par","impar"};
+        System.out.println("Número (0-36) ");
+        int num = teclado.nextInt();
+        String color = "";
+        String par = "";
+        boolean numero_existe = Arrays.asList(numero).contains(numero);
+        if(!numero_existe){
+            System.out.println("El numero no existe :(");
+            return;
+        }else{
+            if (num!=0) {
+                System.out.println("Dime el color que quieres(rojo o negro): ");
+                color = teclado.next();
+
+                boolean color_existe = Arrays.asList(colores).contains(color);
+                if (!color_existe){
+                    System.out.println("Error. El color no es valido.");
+                    return;
+                }else{
+                    System.out.println("Intrdocuce la opcion par o impar: ");
+                    par = teclado.next();
+                    boolean par_existe = Arrays.asList(pares).contains(par);
+                    if (!par_existe){
+                        System.out.println("Error. La opcion par/impar no es valido" );
+                        return;
+                    }
+                }
+            }
+        }
+
+        int numero_sorteo = numero[aleatorio.nextInt(37)];
+        String color_sorteo = colores[aleatorio.nextInt(2)];
+        String pares_sorteo = "";
+        if(numero_sorteo%2==0){
+            pares_sorteo = "par";
+        }else{
+            pares_sorteo = "impar";
+        }
+
+
+
+    }
 
 }
