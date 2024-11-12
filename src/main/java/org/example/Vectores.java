@@ -160,23 +160,19 @@ public class Vectores {
 
         Scanner entrada = new Scanner(System.in);
 
-        // Definir las variables de las características del juego
         int numsamurais = 7;
         int totalpotencia = 30;
 
-        // Crear los arrays para los dos equipos
         int[] equipo1 = new int[numsamurais];
         int[] equipo2 = new int[numsamurais];
 
-        // Lógica para asignar las potencias
-        // Asignar potencias para el primer equipo
         for (int j = 1; j <= 2; j++) {
             int[] equipo;
 
             if (j == 1) {
-                equipo = equipo1;  // Seleccionar el equipo 1
+                equipo = equipo1;
             } else {
-                equipo = equipo2;  // Seleccionar el equipo 2
+                equipo = equipo2;
             }
 
             while (true) {
@@ -189,15 +185,27 @@ public class Vectores {
                     continue;
                 }
 
+                boolean valido = true;
                 int suma = 0;
+
                 for (int i = 0; i < numsamurais; i++) {
-                    equipo[i] = Integer.parseInt(potencias[i]);
-                    suma += equipo[i];
+                    try {
+                        equipo[i] = Integer.parseInt(potencias[i]);
+                        suma += equipo[i];
+                    } catch (NumberFormatException e) {
+                        System.out.println("ERROR: Todos los valores deben ser números enteros.");
+                        valido = false;
+                        break;
+                    }
+                }
+
+                if (!valido) {
+                    continue;
                 }
 
                 if (suma == totalpotencia) {
                     System.out.println("Equipo " + j + " completado.");
-                    break; // Salir del bucle al tener la potencia válida
+                    break;
                 } else {
                     System.out.println("ERROR. La potencia total no suma 30. Inténtalo de nuevo.");
                 }
@@ -206,7 +214,6 @@ public class Vectores {
 
         System.out.println("¡Equipos completados! ¡Empieza la batalla!");
 
-        // Lógica de la batalla directamente en el método main
         int bajasequipo1 = 0;
         int bajasequipo2 = 0;
 
@@ -229,7 +236,6 @@ public class Vectores {
                 bajasequipo2++;
             }
 
-            // Verificar si algún equipo ha perdido más de la mitad de sus samuráis
             if (bajasequipo1 > numsamurais / 2) {
                 System.out.println("¡Equipo 2 GANA! Equipo 1 ha tenido " + bajasequipo1 + " bajas.");
                 break;
@@ -243,5 +249,6 @@ public class Vectores {
         if (bajasequipo1 <= numsamurais / 2 && bajasequipo2 <= numsamurais / 2) {
             System.out.println("La batalla ha terminado sin que ningún equipo tenga más de la mitad de bajas.");
         }
+    }
     }
 }
