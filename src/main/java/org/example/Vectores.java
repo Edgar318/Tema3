@@ -289,21 +289,21 @@ public class Vectores {
         }
     }
 
-    public void rule(){
+    public void ruleta(){
         Scanner teclado = new Scanner(System.in);
         Random aleatorio = new  Random();
         String colores[] = {"rojo","negro"};
 
         Integer numero[] = new Integer[37];
         for (int i=0 ; i < numero.length;i++){
-            numero[i] = 1;
+            numero[i] = i;
         }
         String pares [] = {"par","impar"};
         System.out.println("Número (0-36) ");
         int num = teclado.nextInt();
         String color = "";
         String par = "";
-        boolean numero_existe = Arrays.asList(numero).contains(numero);
+        boolean numero_existe = Arrays.asList(numero).contains(num);
         if(!numero_existe){
             System.out.println("El numero no existe :(");
             return;
@@ -337,6 +337,23 @@ public class Vectores {
             pares_sorteo = "impar";
         }
 
+        System.out.println("Ha tocado el numero " + numero_sorteo + " el color " + color_sorteo + " y " + pares_sorteo);
+
+        if (num!= 0 && numero_sorteo == num && color_sorteo.equals(color) && pares_sorteo.equals(par)){
+            System.out.println("Has ganado");
+        } else if (num!=0 && color_sorteo.equals(color)) {
+            System.out.println("Has acertado el color" );
+
+        } else if (num!=0&&pares_sorteo.equals(par)) {
+            System.out.println("Has acertado la opcion par o impar");
+
+        } else if (num == numero_sorteo && num !=0) {
+            System.out.println("Has acertado el usuario");
+        } else if (num==0 && numero_sorteo==0) {
+            System.out.println("Has ganado y los demas pierden");
+        }else{
+            System.out.println("Has perdido");
+        }
 
 
     }

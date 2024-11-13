@@ -4,7 +4,7 @@ package org.example;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        Vectores prueba_buscar = new Vectores();
-        prueba_buscar.prueba_buscar();
+        Vectores rule = new Vectores();
+        rule.rule();
     }
 }
